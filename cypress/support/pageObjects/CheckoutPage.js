@@ -1,15 +1,16 @@
 import el from "../elements.js";
 
 class CheckoutPage {
-    validarProdutoNoCarrinho(produto) {
-      cy.get(el.productDetailsCheckout(produto)).should('be.visible')
-    }
-  
-    validarPrecoQuantidade() {
-      cy.get('.price').should('be.visible');
-      cy.get('.quantity').should('be.visible');
-    }
+  validateProductInCart(product) {
+    cy.get(el.productDetailsCheckout(product)).should("be.visible");
+    return this;
   }
-  
-  export default new CheckoutPage();
-  
+
+  validatePriceQuantity() {
+    cy.get(".price").should("be.visible");
+    cy.get(".quantity").should("be.visible");
+    return this;
+  }
+}
+
+export default new CheckoutPage();

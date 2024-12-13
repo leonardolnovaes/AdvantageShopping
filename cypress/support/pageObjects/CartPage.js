@@ -1,34 +1,36 @@
 import el from "../elements.js";
 
 class CartPage {
-  abrirCarrinho() {
-    cy.get(el.cartButton).click();
-  }
-
-  removerProduto() {
+  removeProduct() {
     cy.get(el.removeButton).click();
+    return this;
   }
 
-  verificarProdutoNoCarrinho(produto) {
-    cy.get(el.cartProductName).should("contain.text", produto);
+  checkProductInCart(product) {
+    cy.get(el.cartProductName).should("contain.text", product);
+    return this;
   }
 
-  acessarCarrinho() {
+  accessCart() {
     cy.get(el.cartMenu).click();
+    return this;
   }
-  irParaCheckout() {
+  goToCheckout() {
     cy.get(el.checkoutButton).click();
+    return this;
   }
-  carrinhoVazio() {
-    cy.get(el.emptyCart).should('exist').and('be.visible')
+  emptyCart() {
+    cy.get(el.emptyCart).should("exist").and("be.visible");
+    return this;
   }
-  alterarQuantidade() {
-    cy.get(el.editButton).should('be.visible').click()
-    cy.get(el.productUnitPlus).should('be.visible').click()
+  changeQuantity() {
+    cy.get(el.editButton).should("be.visible").click();
+    cy.get(el.productUnitPlus).should("be.visible").click();
+    return this;
   }
-  validarQuantidade(quantidade) {
-    cy.get(el.quantityProductCart).should("have.text", quantidade)
+  validateQuantity(quantity) {
+    cy.get(el.quantityProductCart).should("have.text", quantity);
+    return this;
   }
 }
-
 export default new CartPage();

@@ -1,30 +1,42 @@
-import el from '../elements.js';
+import el from "../elements.js";
 
 class HomePage {
-  acessarSite(url) {
+  accessWebSite(url) {
     cy.visit(url);
+    return this;
   }
 
-  buscarProduto() {
+  searchProduct() {
     cy.get(el.searchButton).click();
+    return this;
   }
 
-  digitarNomeProduto(produto) {
-    cy.get(el.searchBar).type(produto);
+  enterProductName(product) {
+    cy.get(el.searchBar).type(product);
+    return this;
   }
 
-  selecionarProduto(produto) {
-    cy.get(el.productLink(produto)).click();
+  selectProduct(product) {
+    cy.get(el.productLink(product)).click();
+    return this;
   }
-  resultadoBusca(produto) {
-    cy.get(el.titleSearch).should('contain.text', produto)
-    cy.get(el.productName).contains(new RegExp(produto, 'i')).should('be.visible');
+
+  searchResult(product) {
+    cy.get(el.titleSearch).should("contain.text", product);
+    cy.get(el.productName)
+      .contains(new RegExp(product, "i"))
+      .should("be.visible");
+    return this;
   }
-  nomeProdutoDetalhe(produto) {
-    cy.get(el.productNameDetails).should('contain.text', produto)
+
+  nomeProdutoDetalhe(product) {
+    cy.get(el.productNameDetails).should("contain.text", product);
+    return this;
   }
-  adicionarAoCarrinho() {
-    cy.get(el.cartButton).click()
+
+  addToCart() {
+    cy.get(el.cartButton).click();
+    return this;
   }
 }
 

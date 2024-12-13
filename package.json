@@ -7,17 +7,25 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "cy:open": "cypress open",
+    "cy:run": "cypress run"
+
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "axios": "^1.7.9",
     "cypress": "^13.16.1",
-    "cypress-cucumber-preprocessor": "^4.3.1"
+    "cypress-cucumber-preprocessor": "^4.3.1",
+    "cypress-file-upload": "^5.0.8"
   },
   "cypress-cucumber-preprocessor": {
-  "nonGlobalStepDefinitions": false,
-  "step_definitions": "cypress/e2e/steps"
-}
+    "nonGlobalStepDefinitions": false,
+    "step_definitions": "cypress/e2e/steps"
+  },
+  "dependencies": {
+    "form-data": "^4.0.1",
+    "formdata-node": "^6.0.3"
+  }
 }
