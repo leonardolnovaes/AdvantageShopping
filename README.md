@@ -4,9 +4,9 @@ Este projeto automatiza testes funcionais e de API para o site **Advantage Onlin
 
 ## Estrutura do Projeto
 
-- **features/**: Cenários de teste divididos em **api** e **web**.
-- **docs/screenshots/**: Evidências de testes organizadas por tipo (api/web).
-- **cypress/**: Contém as configurações e suporte aos testes.
+- **features/**: Cenários dos testes funcionais divididos em **api** e **web** .
+- **docs/screenshots/**: Evidências dos testes funcionais organizadas por tipo (api/web).
+- **cypress/**: Contém as configurações e suporte aos testes de e2e e api
 
 ---
 
