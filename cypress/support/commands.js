@@ -1,1 +1,1 @@
-import "./commands.js"; // Para JavaScript
+import "./commands.js";

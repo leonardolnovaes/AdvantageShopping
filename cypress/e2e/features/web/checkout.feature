@@ -1,5 +1,4 @@
   Feature: Fluxo de Compra no Advantage Online Shopping
-  # Testes para verificar a busca, adição ao carrinho e gerenciamento de produtos no site Advantage Online Shopping.
 
   Background:
     Given que o usuário está na página inicial do Advantage Online Shopping

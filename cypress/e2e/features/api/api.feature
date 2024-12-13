@@ -1,14 +1,14 @@
 Feature: Fluxo de Compra via API no Advantage Online Shopping
 
-  # @api
-  # Scenario Outline: Buscar produto pela API
-  #   Given que a API está acessível
-  #   When eu envio uma requisição GET para buscar produtos com o nome "<produto>"
-  #   Then a resposta deve conter produtos relacionados a "<produto>"
+  @api
+  Scenario Outline: Buscar produto pela API
+    Given que a API está acessível
+    When eu envio uma requisição GET para buscar produtos com o nome "<produto>"
+    Then a resposta deve conter produtos relacionados a "<produto>"
 
-  #   Examples:
-  #     | produto |
-  #     | laptop  |
+    Examples:
+      | produto |
+      | laptop  |
 
   @api
   Scenario Outline: Atualizar a imagem de um produto
