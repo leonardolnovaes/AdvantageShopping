@@ -12,8 +12,8 @@ Feature: Fluxo de Compra no Advantage Online Shopping
     And clica no botão "Adicionar ao carrinho"
     Then o produto "<nome_do_produto>" deve ser exibido no carrinho
     Examples:
-      | produto | nome_do_produto            |
-      | laptop  | HP ENVY - 17T TOUCH LAPTOP |
+      | produto | nome_do_produto              |
+      | laptop  | HP PAVILION 15T TOUCH LAPTOP |
 
   @web
   @carrinho

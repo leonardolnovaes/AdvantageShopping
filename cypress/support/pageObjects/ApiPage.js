@@ -33,43 +33,37 @@ class ApiPage {
       });
   }
 
-  sendProductImage(product_id, token) {
-    // Pega o nome da imagem aleatória do arquivo imagesList.json
+  chooseRandomImage() {
     return cy.fixture("imagesList.json").then((images) => {
       // Seleciona uma imagem aleatória da lista de images
       const imageRandom = images[Math.floor(Math.random() * images.length)];
 
-      // Define o caminho da imagem no diretório 'cypress/fixtures/images'
-      const imagePath = `images/${imageRandom}`;
+      // Retorna o caminho completo da imagem no diretório 'cypress/fixtures/images'
+      return `images/${imageRandom}`;
+    });
+  }
 
-      // Faz o upload da imagem
-      cy.fixture(imagePath, "binary").then((image) => {
-        // Cria o arquivo Blob com base no conteúdo da imagem
-        const blob = Cypress.Blob.binaryStringToBlob(image, "image/jpeg"); // Ajuste o MIME type se necessário
+  sendProductImage(product_id, token) {
+    this.chooseRandomImage().then((imagePath) => {
+      cy.fixture(imagePath, "base64").then((image) => {
+        const blob = Cypress.Blob.base64StringToBlob(image, "image/jpeg"); // Ajuste o MIME type se necessário
+
+        // Cria o FormData
         const formData = new FormData();
-        formData.append("image", blob, imageRandom);
+        formData.append("file", blob, imagePath.split("/").pop()); // Nome do campo 'file' como no cURL
 
-        const formDataObj = {};
-        formData.forEach((value, key) => {
-          formDataObj[key] = value;
-        });
-        console.log(formDataObj);
+        // Construa a URL com query parameter 'product_id'
+        const url = `/catalog/api/v1/product/image/881338024/1?product_id=${product_id}`; // O product_id como query string
 
-        // Envia a imagem para o servidor
+        // Envia a requisição com multipart/form-data
         cy.request({
-          method: "POST", // Alteração para PUT, já que você mencionou que está atualizando a imagem
-          url: `/catalog/api/v1/product/image/881338024/1`,
+          method: "POST",
+          url: url,
           headers: {
             Authorization: `Bearer ${token}`,
-            Accept: "*/*", // Certifique-se de que o cabeçalho de aceitação está correto
-            "Content-Type": "multipart/form-data",
           },
-          body: {
-            product: product_id, // ID do produto
-            file: formData, // Envia a imagem em formato Blob
-          },
+          body: formData, // Envia o FormData com o arquivo
         }).then((response) => {
-          // Verifica se a imagem foi enviada com sucesso
           if (response.status === 200) {
             cy.log("Imagem atualizada com sucesso:", response.body);
           } else {
