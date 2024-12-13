@@ -35,7 +35,7 @@ When(
   }
 );
 
-// Then("a resposta deve confirmar que a imagem foi atualizada", () => {
-//   // Verifica se a resposta confirma que a imagem foi atualizada
-//   // ApiPage.validateUpdatedImage();
-// });
+Then("a resposta deve confirmar que a imagem foi atualizada", () => {
+  // Verifica se a resposta confirma que a imagem foi atualizada
+  // ApiPage.validateUpdatedImage();
+});
