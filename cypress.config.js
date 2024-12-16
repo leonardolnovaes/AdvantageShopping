@@ -5,6 +5,7 @@ module.exports = defineConfig({
     baseUrl: "https://www.advantageonlineshopping.com/",
     viewportWidth: 1366, // Largura da tela
     viewportHeight: 768,
+    requestTimeout: 10000,
     specPattern: "cypress/e2e/features/**/*.feature",
     setupNodeEvents(on, config) {
       on("file:preprocessor", cucumber());
