@@ -1,4 +1,4 @@
-import el from "../elements.js";
+import el from "../pageObjects/CheckoutPageElements";
 
 class CheckoutPage {
   validateProductInCart(product) {

@@ -1,8 +1,11 @@
-import el from "../elements.js";
+import el from "../pageObjects/HomePageElements";
 
 class HomePage {
   accessWebSite(url) {
+    cy.intercept('**/app/views/home-page.html').as('waitHome')
     cy.visit(url);
+    cy.wait("@waitHome")
+
     return this;
   }
 
@@ -12,7 +15,10 @@ class HomePage {
   }
 
   enterProductName(product) {
+    cy.intercept('**/catalog/api/v1/categories/all_data').as('waitAllData')
+    cy.intercept('**/catalog/api/v1/products/search?**').as('waitSearch')
     cy.get(el.searchBar).type(product);
+    cy.wait(['@waitAllData', '@waitSearch'])
     return this;
   }
 

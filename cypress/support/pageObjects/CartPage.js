@@ -1,4 +1,4 @@
-import el from "../elements.js";
+import el from "../pageObjects/CartPageElements";
 
 class CartPage {
   removeProduct() {
